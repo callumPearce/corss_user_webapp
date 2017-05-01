@@ -1,0 +1,41 @@
+@model user_groups.Models.GroupUserLink
+
+@{
+    ViewData["Title"] = "CreateRequest";
+}
+
+<h2>Create</h2>
+
+<form asp-action="CreateRequest">
+    <div class="form-horizontal">
+        <h4>Create Request</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="ApplicationUserID" class="col-md-2 control-label">Email Address</label>
+            <div class="col-md-10">
+                <input asp-for="ApplicationUserID" class="form-control" />
+                <span asp-validation-for="ApplicationUserID" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input asp-for="GroupItemID" type="hidden" class="form-control" />
+                <span asp-validation-for="GroupItemID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="CreateRequest" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

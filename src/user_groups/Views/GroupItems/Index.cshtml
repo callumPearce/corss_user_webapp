@@ -1,0 +1,49 @@
+@model IEnumerable<user_groups.Models.GroupItem>
+
+@{
+    ViewData["Title"] = "Index";
+    
+}
+
+<h2>Manage Groups</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Group Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Host)
+            </th>
+            <th>
+                Group ID
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Host)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GroupItemID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.GroupItemID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.GroupItemID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.GroupItemID">Delete</a> |
+                <a asp-action="CreateRequest" asp-route-id="@item.GroupItemID">CreateRequest</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

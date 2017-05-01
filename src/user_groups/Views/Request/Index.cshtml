@@ -1,0 +1,38 @@
+@model IEnumerable<user_groups.Models.GroupUserLink>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Manage Requests</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Request ID
+            </th>
+            <th>
+                Group Host
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupUserLinkID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ApplicationUserID)
+                </td>
+                <td>
+                    <a asp-action="Accept" asp-route-id="@item.GroupUserLinkID">Accept</a> |
+                    <a asp-action="Reject" asp-route-id="@item.GroupUserLinkID">Reject</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
